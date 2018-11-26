@@ -35,7 +35,7 @@ bool Game::init(const char* title, int xpos, int ypos, int width,
         std::cout << "surface creation fail\n";
         return false; // renderer init fail
     }
-    SDL_Texture* m_pTexture = SDL_CreateTextureFromSurface(m_pRenderer, pTempSurface);
+    m_pTexture = SDL_CreateTextureFromSurface(m_pRenderer, pTempSurface);
     if (m_pTexture == 0) {
         std::cout << "m_pTexture fail\n";
         return false; // renderer init fail
