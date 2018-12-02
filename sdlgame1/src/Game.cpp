@@ -8,6 +8,7 @@
 
 #include "Game.hpp"
 #include <iostream>
+#include "TextureManager.h"
 
 bool Game::init(const char* title, int xpos, int ypos, int width,
                 int height, int flags) {
@@ -28,39 +29,17 @@ bool Game::init(const char* title, int xpos, int ypos, int width,
         return false; // renderer init fail
     }
     
-//    SDL_SetRenderDrawColor(m_pRenderer, 255, 255, 255, 255);
-    
-//    texture("assets/rider.bmp", 50, 50);
-    texture("assets/animate.bmp", 128, 82);
+    TextureManager::Instance().load("assets/animate.bmp", "animate", m_pRenderer);
     
     m_bRunning = true; // everything inited successfully, start the main loop
     return true;
 }
 
-void Game::texture(const std::string asset, int srcRectW, int srcRectH) {
-    SDL_Surface* pTempSurface = SDL_LoadBMP(asset.c_str());
-    m_pTexture = SDL_CreateTextureFromSurface(m_pRenderer, pTempSurface);
-    SDL_FreeSurface(pTempSurface);
-    
-    SDL_QueryTexture(m_pTexture, NULL, NULL, &m_sourceRectangle.w, &m_sourceRectangle.h);
-    m_sourceRectangle.w = srcRectW;
-    m_sourceRectangle.h = srcRectH;
-    
-    m_destinationRectangle.x = m_sourceRectangle.x = 0;
-    m_destinationRectangle.y = m_sourceRectangle.y = 0;
-    m_destinationRectangle.w = m_sourceRectangle.w;
-    m_destinationRectangle.h = m_sourceRectangle.h;
-}
-
 void Game::render() {
     SDL_RenderClear(m_pRenderer); // clear the renderer to the draw color
     
-//    SDL_RenderCopy(m_pRenderer, m_pTexture, &m_sourceRectangle, &m_destinationRectangle);
-//    SDL_Point center = {20, 20};
-    SDL_RenderCopyEx(m_pRenderer, m_pTexture,
-                     &m_sourceRectangle, &m_destinationRectangle,
-                     45, 0, SDL_FLIP_NONE);
-//    SDL_RenderCopy(m_pRenderer, m_pTexture, 0, 0);
+    TextureManager::Instance().draw("animate", 0, 0, 128, 82, 0, 0, m_pRenderer);
+    TextureManager::Instance().draw("animate", 100, 100, 128, 82, 0, m_currentFrame, m_pRenderer);
     
     SDL_RenderPresent(m_pRenderer); // draw to the screen
 }
@@ -73,15 +52,7 @@ void Game::clean(){
 }
 
 void Game::update() {
-    /*
-     This code will (every 100 ms) shift the x value of our source rectangle by 128 pixels,
-     multiplied by the current frame we want, giving us the correct position
-     SDL_GetTicks() - to find out the amount of ms since SDL was initialized
-     100 - amount of time (in ms) we want between frames
-     128 - the width of frame
-     6 - amount of frames in animation
-     */
-    m_sourceRectangle.x = 128 * int(((SDL_GetTicks() / 100) % 6));
+    m_currentFrame = int(((SDL_GetTicks() / 100) % 6));
 }
 
 void Game::handleEvents() {

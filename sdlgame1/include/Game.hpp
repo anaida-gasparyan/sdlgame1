@@ -26,8 +26,6 @@ public:
     void handleEvents();
     void clean();
     
-    void texture(const std::string asset, int srcRectW, int srcRectH);
-    
     // a function to access the private running variable
     bool isRunning() { return m_bRunning; }
     
@@ -35,9 +33,7 @@ private:
     SDL_Window* m_pWindow;
     SDL_Renderer* m_pRenderer;
     
-    SDL_Texture* m_pTexture; // the new SDL_Texture variable
-    SDL_Rect m_sourceRectangle; // the first rectangle
-    SDL_Rect m_destinationRectangle; // another rectangle
+    int m_currentFrame;
     
     bool m_bRunning;
 };

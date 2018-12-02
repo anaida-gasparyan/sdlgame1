@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		959B6E5721ACB87200C042B5 /* rider.bmp in CopyFiles */ = {isa = PBXBuildFile; fileRef = 959B6E4C21AC85D500C042B5 /* rider.bmp */; };
+		959B6E5821ACBCCA00C042B5 /* animate.bmp in CopyFiles */ = {isa = PBXBuildFile; fileRef = 959B6E5521ACB7E800C042B5 /* animate.bmp */; };
+		959B6E5B21B4371100C042B5 /* TextureManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 959B6E5A21B4371100C042B5 /* TextureManager.cpp */; };
 		95B43F7E21A9BEC800D4D6C0 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 95B43F7D21A9BEC800D4D6C0 /* main.cpp */; };
 		95B43F8621A9BEEA00D4D6C0 /* libSDL2-2.0.0.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 95B43F8521A9BEEA00D4D6C0 /* libSDL2-2.0.0.dylib */; };
 		95B43F8921A9C0CD00D4D6C0 /* Game.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 95B43F8721A9C0CD00D4D6C0 /* Game.cpp */; };
@@ -15,16 +18,23 @@
 /* Begin PBXCopyFilesBuildPhase section */
 		95B43F7821A9BEC800D4D6C0 /* CopyFiles */ = {
 			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 2147483647;
-			dstPath = /usr/share/man/man1/;
-			dstSubfolderSpec = 0;
+			buildActionMask = 12;
+			dstPath = assets;
+			dstSubfolderSpec = 16;
 			files = (
+				959B6E5821ACBCCA00C042B5 /* animate.bmp in CopyFiles */,
+				959B6E5721ACB87200C042B5 /* rider.bmp in CopyFiles */,
 			);
-			runOnlyForDeploymentPostprocessing = 1;
+			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		959B6E4B21AC835500C042B5 /* 1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 1.png; sourceTree = "<group>"; };
+		959B6E4C21AC85D500C042B5 /* rider.bmp */ = {isa = PBXFileReference; lastKnownFileType = image.bmp; path = rider.bmp; sourceTree = "<group>"; };
+		959B6E5521ACB7E800C042B5 /* animate.bmp */ = {isa = PBXFileReference; lastKnownFileType = image.bmp; path = animate.bmp; sourceTree = "<group>"; };
+		959B6E5921B4351500C042B5 /* TextureManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TextureManager.h; sourceTree = "<group>"; };
+		959B6E5A21B4371100C042B5 /* TextureManager.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = TextureManager.cpp; sourceTree = "<group>"; };
 		95B43F7A21A9BEC800D4D6C0 /* sdlgame1 */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = sdlgame1; sourceTree = BUILT_PRODUCTS_DIR; };
 		95B43F7D21A9BEC800D4D6C0 /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
 		95B43F8521A9BEEA00D4D6C0 /* libSDL2-2.0.0.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = "libSDL2-2.0.0.dylib"; path = "../../../../usr/local/Cellar/sdl2/2.0.8/lib/libSDL2-2.0.0.dylib"; sourceTree = "<group>"; };
@@ -44,6 +54,16 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		959B6E4A21AC815700C042B5 /* assets */ = {
+			isa = PBXGroup;
+			children = (
+				959B6E5521ACB7E800C042B5 /* animate.bmp */,
+				959B6E4C21AC85D500C042B5 /* rider.bmp */,
+				959B6E4B21AC835500C042B5 /* 1.png */,
+			);
+			path = assets;
+			sourceTree = "<group>";
+		};
 		95B43F7121A9BEC800D4D6C0 = {
 			isa = PBXGroup;
 			children = (
@@ -64,6 +84,7 @@
 		95B43F7C21A9BEC800D4D6C0 /* sdlgame1 */ = {
 			isa = PBXGroup;
 			children = (
+				959B6E4A21AC815700C042B5 /* assets */,
 				95B43F8B21A9C13800D4D6C0 /* include */,
 				95B43F8A21A9C0E700D4D6C0 /* src */,
 			);
@@ -83,6 +104,7 @@
 			children = (
 				95B43F7D21A9BEC800D4D6C0 /* main.cpp */,
 				95B43F8721A9C0CD00D4D6C0 /* Game.cpp */,
+				959B6E5A21B4371100C042B5 /* TextureManager.cpp */,
 			);
 			path = src;
 			sourceTree = "<group>";
@@ -91,6 +113,7 @@
 			isa = PBXGroup;
 			children = (
 				95B43F8821A9C0CD00D4D6C0 /* Game.hpp */,
+				959B6E5921B4351500C042B5 /* TextureManager.h */,
 			);
 			path = include;
 			sourceTree = "<group>";
@@ -153,6 +176,7 @@
 			files = (
 				95B43F7E21A9BEC800D4D6C0 /* main.cpp in Sources */,
 				95B43F8921A9C0CD00D4D6C0 /* Game.cpp in Sources */,
+				959B6E5B21B4371100C042B5 /* TextureManager.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
