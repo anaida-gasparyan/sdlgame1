@@ -9,6 +9,8 @@
 #include "Game.hpp"
 #include <iostream>
 #include "TextureManager.h"
+#include "Player.h"
+#include "Enemy.h"
 
 bool Game::init(const char* title, int xpos, int ypos, int width,
                 int height, int flags) {
@@ -29,17 +31,27 @@ bool Game::init(const char* title, int xpos, int ypos, int width,
         return false; // renderer init fail
     }
     
+    // load textures
     TextureManager::Instance().load("assets/animate.bmp", "animate", m_pRenderer);
     
-    m_bRunning = true; // everything inited successfully, start the main loop
+    m_player1 = new Player();
+    m_player1->load(100, 100, 128, 82, "animate");
+    m_gameObjects.push_back(m_player1);
+    
+    m_player2 = new Enemy();
+    m_player2->load(0, 0, 128, 82, "animate");
+    m_gameObjects.push_back(m_player2);
+    
+    m_bRunning = true;
     return true;
 }
 
 void Game::render() {
     SDL_RenderClear(m_pRenderer); // clear the renderer to the draw color
     
-    TextureManager::Instance().draw("animate", 0, 0, 128, 82, 0, 0, m_pRenderer);
-    TextureManager::Instance().draw("animate", 100, 100, 128, 82, 0, m_currentFrame, m_pRenderer);
+    for (std::vector<GameObject*>::size_type i = 0; i != m_gameObjects.size(); i++) {
+        m_gameObjects[i]->draw(m_pRenderer);
+    }
     
     SDL_RenderPresent(m_pRenderer); // draw to the screen
 }
@@ -52,7 +64,9 @@ void Game::clean(){
 }
 
 void Game::update() {
-    m_currentFrame = int(((SDL_GetTicks() / 100) % 6));
+    for (std::vector<GameObject*>::size_type i = 0; i != m_gameObjects.size(); i++) {
+        m_gameObjects[i]->update();
+    }
 }
 
 void Game::handleEvents() {

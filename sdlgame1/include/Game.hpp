@@ -14,6 +14,8 @@
 
 #include <SDL.h>
 #include <string>
+#include <vector>
+#include "GameObject.h"
 
 class Game {
 public:
@@ -33,7 +35,10 @@ private:
     SDL_Window* m_pWindow;
     SDL_Renderer* m_pRenderer;
     
-    int m_currentFrame;
+    GameObject* m_player1;
+    GameObject* m_player2;
+    
+    std::vector<GameObject*> m_gameObjects;
     
     bool m_bRunning;
 };
