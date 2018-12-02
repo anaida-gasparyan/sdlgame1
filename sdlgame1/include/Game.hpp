@@ -13,6 +13,7 @@
 #define __Game__
 
 #include <SDL.h>
+#include <string>
 
 class Game {
 public:
@@ -21,9 +22,11 @@ public:
     
     bool init(const char* title, int xpos, int ypos, int width, int height, int flags);
     void render();
-    void update(){}
+    void update();
     void handleEvents();
     void clean();
+    
+    void texture(const std::string asset, int srcRectW, int srcRectH);
     
     // a function to access the private running variable
     bool isRunning() { return m_bRunning; }
